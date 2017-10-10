@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+.box{
+	width: 400px;
+	height: 400px;
+	background-color: red;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 400px;
+	font-size: 100px;
+}
+</style>
+<script src="js/vue.js"></script>
+<script type="text/javascript" src="js/vue-touch.js" ></script>
+</head>
+<body>
+<div id="app" class="box" 
+	v-tap="{fn:vuetap,name:'点击'}" 
+	v-longtap="{fn:vuetap,name:'长按'}" 
+	v-swipeleft="{fn:vuetap,name:'左滑'}"
+	v-swiperight="{fn:vuetap,name:'右滑'}"
+	v-swipeup="{fn:vuetap,name:'上滑'}"
+	v-swipedown="{fn:vuetap,name:'下滑'}"
+>
+{{ name }}
+</div>
+<!--
+	vuetouch为函数名，如没有参数，可直接写函数名,比如：v-tap="vuetap"
+	如果有参数以对象形式传，fn 为函数名
+-->
+<script>
+kim=new Vue({
+	el:"#app",
+	data:{
+		name:"开始"
+	},
+	methods:{
+	  	vuetap:function(s){
+	  		this.name=s.name;
+	  	}
+	}
+});
+</script>
+</body>
+</html>

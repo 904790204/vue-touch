@@ -1,4 +1,4 @@
-function vueTouch(el,binding,type){
+function vueTouch(el,binding,type,vnode){
 	var _this=this;
 	this.obj=el;
 	this.binding=binding;
@@ -17,6 +17,7 @@ function vueTouch(el,binding,type){
 	this.obj.addEventListener("touchmove",function(e){
 		_this.move(e);
 	},false);
+	vnode.key = this.randomString()
 };
 vueTouch.prototype={
 	start:function(e){
@@ -61,40 +62,50 @@ vueTouch.prototype={
 	},
 	move:function(e){
 		this.vueMoves=false;
+	},
+	randomString:function(){
+		var len = 10;
+	　　 var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+	　　 var maxPos = $chars.length;
+	　　 var pwd = '';
+	　　 for (var i = 0; i < len; i++) {
+			pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+	　　 }
+	　　 return pwd;
 	}
 };
 Vue.directive("tap",{
-	bind:function(el,binding){
-		new vueTouch(el,binding,"tap");
+	bind:function(el,binding,vnode){
+		new vueTouch(el,binding,"tap",vnode);
 	}
 });
 Vue.directive("swipe",{
-	bind:function(el,binding){
-		new vueTouch(el,binding,"swipe");
+	bind:function(el,binding,vnode){
+		new vueTouch(el,binding,"swipe",vnode);
 	}
 });
 Vue.directive("swipeleft",{
-	bind:function(el,binding){
-		new vueTouch(el,binding,"swipeleft");
+	bind:function(el,binding,vnode){
+		new vueTouch(el,binding,"swipeleft",vnode);
 	}
 });
 Vue.directive("swiperight",{
-	bind:function(el,binding){
-		new vueTouch(el,binding,"swiperight");
+	bind:function(el,binding,vnode){
+		new vueTouch(el,binding,"swiperight",vnode);
 	}
 });
 Vue.directive("swipedown",{
-	bind:function(el,binding){
-		new vueTouch(el,binding,"swipedown");
+	bind:function(el,binding,vnode){
+		new vueTouch(el,binding,"swipedown",vnode);
 	}
 });
 Vue.directive("swipeup",{
-	bind:function(el,binding){
-		new vueTouch(el,binding,"swipeup");
+	bind:function(el,binding,vnode){
+		new vueTouch(el,binding,"swipeup",vnode);
 	}
 });
 Vue.directive("longtap",{
-	bind:function(el,binding){
-		new vueTouch(el,binding,"longtap");
+	bind:function(el,binding,vnode){
+		new vueTouch(el,binding,"longtap",vnode);
 	}
 });

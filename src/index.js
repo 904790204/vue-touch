@@ -26,7 +26,7 @@ vueTouch.prototype={
 		this.vueTouches={x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
 		this.time=setTimeout(function(){
 			if(this.vueLeave&&this.vueMoves){
-				this.touchType=="longtap"&&this.vueCallBack();
+				this.touchType=="longtap"&&this.vueCallBack(e);
 				this.longTouch=false;
 			};
 		}.bind(this),1000);

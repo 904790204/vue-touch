@@ -20,6 +20,7 @@ function vueTouch(el,binding,type,vnode){
 };
 vueTouch.prototype={
 	start:function(e){
+		e.preventDefault()
 		this.vueMoves=true;
 		this.vueLeave=true;
 		this.longTouch=true;

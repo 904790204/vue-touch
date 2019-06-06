@@ -16,18 +16,18 @@ function vueTouch(el,binding,type,vnode){
 	this.obj.addEventListener("touchmove",(e)=>{
 		this.move(e);
 	},false);
-	vnode.key = this.randomString()
+	// vnode.key = this.randomString()
+	
 };
 vueTouch.prototype={
 	start:function(e){
-		e.preventDefault()
 		this.vueMoves=true;
 		this.vueLeave=true;
 		this.longTouch=true;
 		this.vueTouches={x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
 		this.time=setTimeout(function(){
 			if(this.vueLeave&&this.vueMoves){
-				this.touchType=="longtap"&&this.vueCallBack(e);
+				this.touchType=="longtap"&&this.vueCallBack();
 				this.longTouch=false;
 			};
 		}.bind(this),1000);
@@ -80,7 +80,7 @@ export default {
         Vue.directive("tap",{
             bind:function(el,binding,vnode){
                 new vueTouch(el,binding,"tap",vnode);
-            }
+			}
         });
         Vue.directive("swipe",{
             bind:function(el,binding,vnode){

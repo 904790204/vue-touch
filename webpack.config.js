@@ -1,6 +1,7 @@
 let path = require('path')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let VueLoaderPlugin = require('vue-loader/lib/plugin');
+let PORT = process.env.PORT && Number(process.env.PORT)
 
 module.exports = {
     mode: 'development',
@@ -58,7 +59,7 @@ module.exports = {
         }
     },
     devServer: {
-        port: 8082,
+        port: PORT,
         open: true
     },
     plugins: [
